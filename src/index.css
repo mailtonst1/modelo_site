@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-primary font-sans antialiased overflow-x-hidden;
+    /* Custom cursor hide default */
+    cursor: none;
+  }
+
+  /* Hide cursor for interactive elements as well, our custom one will handle it */
+  a,
+  button,
+  input,
+  [role="button"] {
+    cursor: none;
+  }
+}
+
+/* Custom Cursor Styles */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.default {
+  background-color: theme('colors.accent');
+  width: 12px;
+  height: 12px;
+}
+
+.custom-cursor.hover {
+  width: 60px;
+  height: 60px;
+  background-color: theme('colors.accent');
+  mix-blend-mode: normal;
+  opacity: 0.2;
+}
+
+.custom-cursor.reveal {
+  width: 250px;
+  height: 250px;
+  background-color: transparent;
+  /* Mask handled via GSAP inline styles */
+}
+
+/* Base utility for font-display */
+.font-display {
+  font-family: 'Outfit', 'Inter', sans-serif;
+}
